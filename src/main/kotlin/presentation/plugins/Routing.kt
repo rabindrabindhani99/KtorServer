@@ -8,7 +8,10 @@ import org.koin.ktor.ext.inject
 
 fun Application.configureRouting() {
     val userService: UserService by inject()
+    val prefix = environment.config.propertyOrNull("ktor.routing.prefix")?.getString() ?: ""
     routing {
-        userRoutes(userService)
+        route(prefix) {
+            userRoutes(userService)
+        }
     }
 }

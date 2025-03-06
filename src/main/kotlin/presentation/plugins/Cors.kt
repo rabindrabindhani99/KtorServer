@@ -9,6 +9,12 @@ fun Application.configureCORS() {
         allowMethod(HttpMethod.Get)
         allowMethod(HttpMethod.Post)
         allowHeader(HttpHeaders.ContentType)
-        anyHost()
+        allowHeader(HttpHeaders.Authorization)
+
+        allowHost("rabindradev.com", schemes = listOf("http", "https"))
+
+        // Allow localhost for development
+        allowHost("localhost:8080")
+        allowHost("0.0.0.0:8081")
     }
 }

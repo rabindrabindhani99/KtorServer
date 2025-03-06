@@ -7,11 +7,14 @@ ktor:
     database:
         driver: "org.postgresql.Driver"
         url: "jdbc:postgresql://localhost:5432/myserverdb"
-        user: "rabindra"
+        user: "rabindradev"
         password: "Rabindra@dev#8117"
         maxPoolSize: 10
+    routing:
+        prefix: "/chitichat"
 
 jwt:
-    domain: "https://jwt-provider-domain/"
-    audience: "jwt-audience"
-    realm: "Server app"
+    domain: "https://securetoken.google.com/chitichat0"
+    audience: "chitichat0"
+    realm: "Firebase Auth"
+    jwks_url: "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com"
