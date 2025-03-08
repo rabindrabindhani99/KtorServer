@@ -22,8 +22,8 @@ class UserRepositoryImpl(private val db: Database) : UserRepository {
         }
     }
 
-    override suspend fun getUserById(id: UUID): User? = newSuspendedTransaction(db = db) {
-        UsersTable.select { UsersTable.id eq id }
+    override suspend fun getUserByEmail(email: String): User? = newSuspendedTransaction(db = db) {
+        UsersTable.select { UsersTable.email eq email }
             .map {
                 User(
                     id = it[UsersTable.id],

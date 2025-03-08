@@ -5,6 +5,6 @@ import java.util.UUID
 
 interface UserRepository {
     suspend fun getAllUsers(): List<User>
-    suspend fun getUserById(id: UUID): User?
+    suspend fun getUserByEmail(email: String): User?
     suspend fun createUser(name: String, email: String): User
 }

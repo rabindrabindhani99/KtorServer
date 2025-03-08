@@ -7,7 +7,7 @@ ktor:
     database:
         driver: "org.postgresql.Driver"
         url: "jdbc:postgresql://localhost:5432/myserverdb"
-        user: "rabindradev"
+        user: "rabindra"
         password: "Rabindra@dev#8117"
         maxPoolSize: 10
     routing:
