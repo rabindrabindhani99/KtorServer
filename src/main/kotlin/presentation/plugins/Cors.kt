@@ -13,7 +13,6 @@ fun Application.configureCORS() {
 
         allowHost("rabindradev.com", schemes = listOf("http", "https"))
 
-        // Allow localhost for development
         allowHost("localhost:8080")
         allowHost("0.0.0.0:8081")
     }
