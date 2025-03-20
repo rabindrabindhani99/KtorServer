@@ -1,21 +1,19 @@
 ktor:
-    application:
-        modules:
-            - com.rabindradev.ApplicationKt.module
-    deployment:
-        port: 8081
-    database:
-        driver: "org.postgresql.Driver"
-        url: "jdbc:postgresql://localhost:5432/myserverdb"
-        user: "rabindradev"
-        password: "Rabindra@dev#8117"
-        maxPoolSize: 10
-    routing:
-        prefix: "/chitichat"
+  application:
+    modules:
+      - com.rabindradev.ApplicationKt.module
+  deployment:
+    port: 8081
+  database:
+    driver: "org.postgresql.Driver"
+    url: "jdbc:postgresql://localhost:5432/myserverdb"
+    user: "rabindra"
+    password: "Rabindra@dev#8117"
+    maxPoolSize: 10
+  routing:
+    prefix: "/chitichat"
 
 jwt:
-    secret: "Rabindra@dev#8117"
-    domain: "https://securetoken.google.com/chitichat0"
-    audience: "chitichat0"
-    realm: "Firebase Auth"
-    jwks_url: "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com"
+  secret: "Rabindra@dev#8117"
+  domain: "https://securetoken.google.com/chitichat0"
+  audience: "chitichat0"

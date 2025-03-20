@@ -1,44 +1,27 @@
 package com.rabindradev.data.tables
 
-import com.rabindradev.data.models.User
+import com.rabindradev.data.models.UserDto
 import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.insert
-import java.util.UUID
+import java.util.*
 
 object UsersTable : Table("users") {
     val id = uuid("id").default(UUID.randomUUID())
-    val name = varchar("name", 255)
     val email = varchar("email", 255).uniqueIndex()
+    val password = varchar("password", 255)
     override val primaryKey = PrimaryKey(id)
 }
 
-fun UsersTable.insertUser(name: String, email: String): Result<User> {
+fun UsersTable.insertUser(email: String, password: String): Result<UserDto> {
     return try {
-        val id = UUID.randomUUID()
+        val userId = UUID.randomUUID()
         insert {
-            it[UsersTable.id] = id
-            it[UsersTable.name] = name
+            it[UsersTable.id] = userId
             it[UsersTable.email] = email
+            it[UsersTable.password] = password
         }
-        Result.success(User(id, name, email))
+        Result.success(UserDto(userId, email, password))
     } catch (e: Exception) {
         Result.failure(e)
     }
 }
-
-
-fun Transaction.insertUserRaw(name: String, email: String): Result<User> {
-    return try {
-        val id = UUID.randomUUID().toString()
-        val query = "INSERT INTO users (id, name, email) VALUES ('$id', '$name', '$email')"
-
-        exec(query)
-
-        Result.success(User(UUID.fromString(id), name, email))
-    } catch (e: Exception) {
-        Result.failure(e)
-    }
-}
-
-

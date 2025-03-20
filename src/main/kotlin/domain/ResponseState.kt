@@ -1,7 +1,7 @@
 package com.rabindradev.domain
 
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 
 @Serializable
 sealed class ResponseState<out T> {
@@ -12,10 +12,10 @@ sealed class ResponseState<out T> {
     data class Error(val message: String, @Contextual val throwable: Throwable? = null) : ResponseState<Nothing>()
 
     @Serializable
-    object Loading : ResponseState<Nothing>()
+    data object Loading : ResponseState<Nothing>()
 
     @Serializable
-    object Idle : ResponseState<Nothing>()
+    data object Idle : ResponseState<Nothing>()
 }
 
 fun <T> ResponseState<T>.isLoading(): Boolean = this is ResponseState.Loading

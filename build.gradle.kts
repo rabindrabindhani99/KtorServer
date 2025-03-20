@@ -46,4 +46,5 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-java-time:0.44.0")
     implementation("com.zaxxer:HikariCP:5.1.0")
     implementation("ch.qos.logback:logback-classic:1.4.12")
+    implementation("org.mindrot:jbcrypt:0.4")
 }

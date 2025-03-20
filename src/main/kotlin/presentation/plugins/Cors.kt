@@ -1,8 +1,8 @@
 package com.rabindradev.presentation.plugins
 
+import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.cors.routing.*
-import io.ktor.http.*
 
 fun Application.configureCORS() {
     install(CORS) {
@@ -12,7 +12,6 @@ fun Application.configureCORS() {
         allowHeader(HttpHeaders.Authorization)
 
         allowHost("rabindradev.com", schemes = listOf("http", "https"))
-
         allowHost("localhost:8080")
         allowHost("0.0.0.0:8081")
     }
